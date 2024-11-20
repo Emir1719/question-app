@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "259198524234",
+    "project_id": "question-app-af3e4",
+    "storage_bucket": "question-app-af3e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:259198524234:android:a8f4791e1c31bebd4dffb3",
+        "android_client_info": {
+          "package_name": "com.example.question_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYwZcK4gU3VfUG9xEaWwn-7MpJ74iWnXs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
