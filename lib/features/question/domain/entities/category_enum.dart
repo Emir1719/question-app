@@ -30,6 +30,16 @@ enum QuestionCategory {
 
   const QuestionCategory(this.value, this.longName);
 
+  String toDisplayName() {
+    if (!longName.contains(":")) {
+      return longName;
+    }
+
+    var secondPart = longName.split(":")[1];
+    return secondPart.trim();
+  }
+
   String toJson() => value;
-  static QuestionCategory fromJson(String json) => values.firstWhere((element) => element.longName == json);
+  static QuestionCategory fromJson(String json) =>
+      values.firstWhere((element) => element.longName == json);
 }

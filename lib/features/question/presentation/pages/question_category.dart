@@ -72,7 +72,7 @@ class QuestionCategoryView extends StatelessWidget {
 
   Widget categoryName(QuestionCategory category) {
     return Text(
-      category.longName,
+      category.toDisplayName(),
       style: TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.bold,

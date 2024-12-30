@@ -21,8 +21,10 @@ class ProfileView extends StatelessWidget {
           title: const Text("Profil"),
           actions: [
             IconButton(
-              onPressed: () {
-                context.read<AuthCubit>().singOut();
+              onPressed: () async {
+                await context.read<AuthCubit>().singOut();
+
+                if (!context.mounted) return;
 
                 Navigator.pushReplacement(
                   context,

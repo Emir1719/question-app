@@ -19,14 +19,17 @@ class QuestionOption extends StatelessWidget {
       body: OrientationBuilder(builder: (context, orientation) {
         return Column(
           children: [
-            orientation == Orientation.portrait ? Image.asset(AppImage.study, height: 180) : const SizedBox(),
+            orientation == Orientation.portrait
+                ? Image.asset(AppImage.study, height: 180)
+                : const SizedBox(),
             Expanded(
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height,
                 padding: AppPadding.defaultPadding,
                 margin: AppPadding.defaultPadding,
-                decoration: BoxDecoration(color: AppColor().white, borderRadius: BorderRadius.circular(15)),
+                decoration:
+                    BoxDecoration(color: AppColor().white, borderRadius: BorderRadius.circular(15)),
                 child: ListView(
                   children: [
                     selectCategory(),
@@ -86,7 +89,7 @@ class QuestionOption extends StatelessWidget {
         ),
         const SizedBox(height: 10),
         Text(
-          category.longName,
+          category.toDisplayName(),
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.w600,

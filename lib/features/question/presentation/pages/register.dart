@@ -23,50 +23,62 @@ class RegisterView extends StatelessWidget {
         body: Padding(
           padding: AppPadding.defaultPadding,
           child: Form(
-            child: Column(
+            child: ListView(
               children: [
                 textfield("Email", email),
                 space,
                 textfield("Password", password),
                 space,
-                BlocBuilder<AuthCubit, AuthState>(
-                  builder: (context, state) {
-                    if (state is AuthLoading) {
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    return Container();
-                  },
-                ),
                 ElevatedButton(
                   onPressed: () async {
-                    await context.read<AuthCubit>().register(email.text.trim(), password.text.trim());
+                    await context
+                        .read<AuthCubit>()
+                        .register(email.text.trim(), password.text.trim());
 
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SplashScreen()),
-                    );
+                    if (!context.mounted) return;
+
+                    _gotoSplash(context);
                   },
                   style: AppStyle().buttonStyle(context),
-                  child: const Text("Kayıt Ol"),
+                  child: BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      if (state is AuthLoading) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      return const Text("Kayıt Ol");
+                    },
+                  ),
                 ),
                 space,
                 ElevatedButton(
                   onPressed: () async {
                     await context.read<AuthCubit>().login(email.text.trim(), password.text.trim());
+                    if (!context.mounted) return;
 
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SplashScreen()),
-                    );
+                    _gotoSplash(context);
                   },
                   style: AppStyle().buttonStyle(context),
-                  child: const Text("Giriş Yap"),
+                  child: BlocBuilder<AuthCubit, AuthState>(
+                    builder: (context, state) {
+                      if (state is AuthLoading) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      return const Text("Giriş Yap");
+                    },
+                  ),
                 ),
               ],
             ),
           ),
         ),
       ),
+    );
+  }
+
+  void _gotoSplash(BuildContext context) {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => const SplashScreen()),
     );
   }
 
