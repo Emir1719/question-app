@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:question_app/features/question/presentation/cubit/auth/auth_cubit.dart';
 import 'package:question_app/features/question/presentation/cubit/profile/profile_cubit.dart';
-import 'package:question_app/features/question/presentation/pages/splash.dart';
+import 'package:question_app/features/question/util/color.dart';
 import 'package:question_app/features/question/util/padding.dart';
-import 'package:question_app/features/question/util/style.dart';
 
 class ProfileSuccess extends StatelessWidget {
   const ProfileSuccess({super.key, required this.state});
@@ -42,30 +39,14 @@ class ProfileSuccess extends StatelessWidget {
               value: (user.mark % 100) / 100,
               minHeight: 10,
               valueColor: const AlwaysStoppedAnimation(Colors.deepOrange),
+              backgroundColor: Colors.orange.shade50,
             ),
-            const SizedBox(height: 5),
+            const SizedBox(height: 8),
             Center(
               child: Text(
                 "${user.level + 1}. seviye için ${(user.mark % 100)}% tamamlandı",
                 style: const TextStyle(fontSize: 16),
               ),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                try {
-                  context.read<AuthCubit>().singOut();
-
-                  Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => const SplashScreen()),
-                  );
-                } catch (e) {
-                  print(e);
-                }
-              },
-              style: AppStyle().buttonStyle(context),
-              child: const Text("Çıkış yap"),
             ),
           ],
         ),
@@ -76,7 +57,8 @@ class ProfileSuccess extends StatelessWidget {
   Column column(String title, String value, IconData? icon) {
     return Column(
       children: [
-        Icon(icon, size: 32),
+        Icon(icon, size: 34, color: AppColor().primary),
+        SizedBox(height: 8),
         Text(
           title,
           style: const TextStyle(fontSize: 16),

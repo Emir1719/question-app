@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:question_app/features/question/presentation/cubit/auth/auth_cubit.dart';
 import 'package:question_app/features/question/presentation/cubit/bottom_bar/bottombar_cubit.dart';
@@ -45,13 +46,19 @@ class MainApp extends StatelessWidget {
         backgroundColor: AppColor().primary,
         foregroundColor: AppColor().white,
         centerTitle: true,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarColor: AppColor().primary,
+          statusBarIconBrightness: Brightness.light,
+          systemNavigationBarColor: AppColor().white,
+          systemNavigationBarIconBrightness: Brightness.dark,
+        ),
       ),
       elevatedButtonTheme: const ElevatedButtonThemeData(
         style: ButtonStyle(
-          fixedSize: MaterialStatePropertyAll(
+          fixedSize: WidgetStatePropertyAll(
             Size.fromHeight(50),
           ),
-          textStyle: MaterialStatePropertyAll(TextStyle(fontSize: 16)),
+          textStyle: WidgetStatePropertyAll(TextStyle(fontSize: 16)),
         ),
       ),
     );

@@ -18,7 +18,7 @@ class LeaderboardListView extends StatelessWidget {
         var user = state.users[index];
 
         return Card(
-          color: isCurrentUser(user) ? AppColor().primary : AppColor().backgroundLightPurple,
+          color: isCurrentUser(user) ? AppColor().primary : Colors.grey.shade200,
           child: ListTile(
             title: Text(user.name, style: titleStyle(user)),
             subtitle: Text("${user.mark} Puan", style: subtitleStyle(user)),
@@ -30,7 +30,7 @@ class LeaderboardListView extends StatelessWidget {
               ),
               child: Text((index + 1).toString(), style: chipStyle()),
             ),
-            trailing: index == 0 ? Image.asset(AppImage.trophy, height: 35) : null,
+            trailing: index == 0 ? Image.asset(AppImage.trophy, height: 30) : null,
           ),
         );
       },
